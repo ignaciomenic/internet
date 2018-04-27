@@ -28,7 +28,20 @@ var users = [
         email: 'carlagimenez@mail.com',
     }
     ]
-
+function filterByAge(age){
     for(var i=0; i < users.length; i++){
-        console.log(users[i].lastaname + ' , ' + users[i].name + ' tiene ' + users[i].children.length + ' hijos');
+        if( age > users[i].age ){
+        console.log( assamble( users[i] ) );
+     }
+    }    
+}
+
+
+
+     function assamble(user){
+        return user.lastaname 
+        + ' , ' 
+        + user.name 
+        + ' tiene ' 
+        + user.children.length + ' hijos';
      }
