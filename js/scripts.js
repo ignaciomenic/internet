@@ -45,3 +45,19 @@ function filterByAge(age){
         + ' tiene ' 
         + user.children.length + ' hijos';
      }
+
+     var listUsers = {
+         assamble: function(user){
+            return user.lastaname 
+            + ' , ' 
+            + user.name 
+            + ' tiene ' 
+            + user.children.length + ' hijos';
+    
+},
+iterate: function(userList){
+    for(var i=0; i < userList.lenght; i++) {
+        console.log(listUsers.assamble(userList[i]));
+    }
+}
+}
