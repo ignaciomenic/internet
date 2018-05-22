@@ -49,69 +49,25 @@ var users = [
 var listusers = {
     users: [],
     assamble: function(user){
-        return '<tr>'
-        + '<td>'+ user.Name +'</td>'
-        + '<td>'+ user.age +'</td>'
-        + '<td>'+ user.email +'</td>'
-        + '<td>'+ user.country +'</td>'
-        + '<td>'+ user.salary +'</td>'
-        + '<td>'+ user.profile +'</td>'
-      +'</tr>';
-
-
-    /* return user.lastname 
+    return user.lastname 
     + ', ' 
     + user.Name 
     + ' tiene ' 
     
-    + ' hijos '; */
+    + ' hijos ';
     },
-    listAll: function(){
+    iterate: function(){
         for (var i=0; i < listusers.users.length; i++){
-            $('#users tbody').append(listusers.assamble(listusers.users[i])
-        );
+            console.log(listusers.assamble(listusers.users[i]));
         }
     },
-
-    filterByAge: function (age) {
-        var downLimit = age - 5 ;
-        var upLimit = age + 5;
-        for (var i = 0; i < listusers.users.length; i++){
-        if (listusers.users[i].age >= downLimit ||
-            listusers.users[i].age <= upLimit){
-           $('#users tbody').append( 
-           listusers.assamble(listusers.users[i])
-           )
-         };
-        }
-    },
-
     setUsers: function (users){
         listusers.users = users;
-    },
-    clearTable: function(){
-        $('#users tbody').html('');
-    }    
+    }
 }
 
-$('#clickme').on('click',function(){
-     listusers.setUsers(usersItems);
-     listusers.listAll();
-    });
-
-$('#clear').on('click',function(){
-listusers.clearTable();    
-});    
-
-$('#filter').on('click',function(){
-    listusers.clearTable();
-    var userAge = $('#userAge').val();
-    if(userAge && listusers.users.length){ 
-        listusers.filterByAge();
-    }
-    
-}); 
-/*$('clickme').on('click',function(){
+/**
+$('clickme').on('click',fuction(){
     if ($('h1').hasClass('active')){
         $('h1')
         .removeClass('active')
@@ -122,4 +78,5 @@ $('#filter').on('click',function(){
         .removeClass('disabled')
         .addClass('active');
     }
-})*/
+}
+ */
