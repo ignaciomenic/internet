@@ -49,25 +49,69 @@ var users = [
 var listusers = {
     users: [],
     assamble: function(user){
-    return user.lastname 
+        return '<tr>'
+        + '<td>'+ user.Name +'</td>'
+        + '<td>'+ user.age +'</td>'
+        + '<td>'+ user.email +'</td>'
+        + '<td>'+ user.country +'</td>'
+        + '<td>'+ user.salary +'</td>'
+        + '<td>'+ user.profile +'</td>'
+      +'</tr>';
+
+
+    /* return user.lastname 
     + ', ' 
     + user.Name 
     + ' tiene ' 
     
-    + ' hijos ';
+    + ' hijos '; */
     },
-    iterate: function(){
+    listAll: function(){
         for (var i=0; i < listusers.users.length; i++){
-            console.log(listusers.assamble(listusers.users[i]));
+            $('#users tbody').append(listusers.assamble(listusers.users[i])
+        );
         }
     },
+
+    filterByAge: function (age) {
+        var downLimit = age - 5 ;
+        var upLimit = age + 5;
+        for (var i = 0; i < listusers.users.length; i++){
+        if (listusers.users[i].age >= downLimit ||
+            listusers.users[i].age <= upLimit){
+           $('#users tbody').append( 
+           listusers.assamble(listusers.users[i])
+           )
+         };
+        }
+    },
+
     setUsers: function (users){
         listusers.users = users;
-    }
+    },
+    clearTable: function(){
+        $('#users tbody').html('');
+    }    
 }
 
-/**
-$('clickme').on('click',fuction(){
+$('#clickme').on('click',function(){
+     listusers.setUsers(usersItems);
+     listusers.listAll();
+    });
+
+$('#clear').on('click',function(){
+listusers.clearTable();    
+});    
+
+$('#filter').on('click',function(){
+    listusers.clearTable();
+    var userAge = $('#userAge').val();
+    if(userAge && listusers.users.length){ 
+        listusers.filterByAge();
+    }
+    
+}); 
+/*$('clickme').on('click',function(){
     if ($('h1').hasClass('active')){
         $('h1')
         .removeClass('active')
@@ -78,5 +122,4 @@ $('clickme').on('click',fuction(){
         .removeClass('disabled')
         .addClass('active');
     }
-}
- */
+})*/
